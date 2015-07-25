@@ -19,5 +19,5 @@ empty : Test8
 empty = Array.empty
 
 encode : Test8 -> Json.Encode.Value
-encode = (Go2Elm.encodeSlice (Go2Elm.encodeMaybe Testdata.Test2.encode))
+encode = (Go2Elm.encodeSlice (Go2Elm.encodePtr Testdata.Test2.encode))
 

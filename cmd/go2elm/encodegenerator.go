@@ -51,7 +51,7 @@ func (self *EncodeGenerator) VisitBool(name string, resume func()) {
 
 func (self *EncodeGenerator) VisitPtr(name string, resume func()) {
 	self.withEncode(name, func() {
-		self.printf("(Go2Elm.encodeMaybe ")
+		self.printf("(Go2Elm.encodePtr ")
 		resume()
 		self.printf(")")
 	})

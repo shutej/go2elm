@@ -20,8 +20,8 @@ decodeMap : Json.Decode.Decoder a -> Json.Decode.Decoder (Dict.Dict String a)
 decodeMap decoder =
     Json.Decode.oneOf [ Json.Decode.null Dict.empty, Json.Decode.dict decoder ]
 
-encodeMaybe : (a -> Json.Encode.Value) -> Maybe.Maybe a -> Json.Encode.Value
-encodeMaybe encode maybe =
+encodePtr : (a -> Json.Encode.Value) -> Maybe.Maybe a -> Json.Encode.Value
+encodePtr encode maybe =
   case maybe of
     Maybe.Just value -> encode value
     Maybe.Nothing    -> Json.Encode.null

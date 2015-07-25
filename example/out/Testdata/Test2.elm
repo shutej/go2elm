@@ -18,5 +18,5 @@ empty : Test2
 empty = {aStringPtr=Maybe.Nothing, aIntPtr=Maybe.Nothing, aFloatPtr=Maybe.Nothing, aBoolPtr=Maybe.Nothing}
 
 encode : Test2 -> Json.Encode.Value
-encode = (\x -> Json.Encode.object [ ("aStringPtr", (Go2Elm.encodeMaybe Json.Encode.string) x.aStringPtr), ("aIntPtr", (Go2Elm.encodeMaybe Json.Encode.int) x.aIntPtr), ("aFloatPtr", (Go2Elm.encodeMaybe Json.Encode.float) x.aFloatPtr), ("aBoolPtr", (Go2Elm.encodeMaybe Json.Encode.bool) x.aBoolPtr) ])
+encode = (\x -> Json.Encode.object [ ("aStringPtr", (Go2Elm.encodePtr Json.Encode.string) x.aStringPtr), ("aIntPtr", (Go2Elm.encodePtr Json.Encode.int) x.aIntPtr), ("aFloatPtr", (Go2Elm.encodePtr Json.Encode.float) x.aFloatPtr), ("aBoolPtr", (Go2Elm.encodePtr Json.Encode.bool) x.aBoolPtr) ])
 

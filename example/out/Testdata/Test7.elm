@@ -19,5 +19,5 @@ empty : Test7
 empty = Maybe.Nothing
 
 encode : Test7 -> Json.Encode.Value
-encode = (Go2Elm.encodeMaybe Testdata.Test2.encode)
+encode = (Go2Elm.encodePtr Testdata.Test2.encode)
 
