@@ -1,8 +1,8 @@
 {
     "version": "1.0.0",
-    "summary": "helpful summary of your project, less than 80 characters",
-    "repository": "https://github.com/USER/PROJECT.git",
-    "license": "BSD3",
+    "summary": "Example use of go2elm generated code.",
+    "repository": "https://github.com/shutej/go2elm.git",
+    "license": "MIT",
     "source-directories": [
         ".",
         "Anonymous",
