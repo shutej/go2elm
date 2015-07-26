@@ -2,6 +2,8 @@ package testdata
 
 //go:generate go2elm --yml go2elm.yml --out out
 
+import "time"
+
 type EmbeddedStruct struct {
 	AString string  `json:"aString,omitempty"`
 	AInt    int     `json:"aInt,omitempty"`
@@ -54,5 +56,9 @@ type Test7 *Test2
 
 type Test8 []*Test2
 
+type Test9 struct {
+	X time.Time
+}
+
 // TODO(shutej): Fix this error.
-// type Test9 *Test9
+// type Test10 *Test10
