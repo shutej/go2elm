@@ -2,7 +2,7 @@
     "version": "1.0.0",
     "summary": "Example use of go2elm generated code.",
     "repository": "https://github.com/shutej/go2elm.git",
-    "license": "MIT",
+    "license": "BSD3",
     "source-directories": [
         ".",
         "Anonymous",
