@@ -60,5 +60,4 @@ type Test9 struct {
 	X time.Time
 }
 
-// TODO(shutej): Fix this error.
 type Test10 *Test10
