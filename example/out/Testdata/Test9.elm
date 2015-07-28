@@ -10,14 +10,19 @@ import Go2Elm
 
 import Time.Time
 
-type alias Test9 = {x : Time.Time.Time}
+type alias Test9 = {x : Time.Time.T}
 
-decode : Json.Decode.Decoder Test9
-decode = (Json.Decode.object1 Test9 ("X" := Time.Time.decode))
+type T = T Test9
 
-empty : Test9
-empty = {x=Time.Time.empty}
+t : T -> Test9
+t x = case x of T y -> y
 
-encode : Test9 -> Json.Encode.Value
-encode = (\x -> Json.Encode.object [ ("X", Time.Time.encode x.x) ])
+decode : Json.Decode.Decoder T
+decode = Json.Decode.map T (Json.Decode.object1 Test9 ("X" := Time.Time.decode))
+
+empty : T
+empty = T {x=Time.Time.empty}
+
+encode : T -> Json.Encode.Value
+encode = (\x -> Json.Encode.object [ ("X", Time.Time.encode x.x) ]) << t
 

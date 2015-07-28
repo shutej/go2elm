@@ -17,11 +17,10 @@ func (self *EncodeGenerator) withEncode(name string, resume func()) {
 			return
 		}
 
-		typ := UpperCamelcase(Name(name))
-		self.printf("encode : %s -> Json.Encode.Value\n", typ)
+		self.printf("encode : T -> Json.Encode.Value\n")
 		self.printf("encode = ")
 		resume()
-		self.printf("\n\n")
+		self.printf(" << t\n\n")
 	})
 }
 

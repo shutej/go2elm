@@ -17,9 +17,8 @@ func (self *EmptyGenerator) withEmpty(name string, resume func()) {
 			return
 		}
 
-		typ := UpperCamelcase(Name(name))
-		self.printf("empty : %s\n", typ)
-		self.printf("empty = ")
+		self.printf("empty : T\n")
+		self.printf("empty = T ")
 		resume()
 		self.printf("\n\n")
 	})

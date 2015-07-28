@@ -11,12 +11,17 @@ import Go2Elm
 
 type alias T1 = {x : Int}
 
-decode : Json.Decode.Decoder T1
-decode = (Json.Decode.object1 T1 ("X" := Json.Decode.int))
+type T = T T1
 
-empty : T1
-empty = {x=0}
+t : T -> T1
+t x = case x of T y -> y
 
-encode : T1 -> Json.Encode.Value
-encode = (\x -> Json.Encode.object [ ("X", Json.Encode.int x.x) ])
+decode : Json.Decode.Decoder T
+decode = Json.Decode.map T (Json.Decode.object1 T1 ("X" := Json.Decode.int))
+
+empty : T
+empty = T {x=0}
+
+encode : T -> Json.Encode.Value
+encode = (\x -> Json.Encode.object [ ("X", Json.Encode.int x.x) ]) << t
 

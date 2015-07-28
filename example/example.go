@@ -61,4 +61,4 @@ type Test9 struct {
 }
 
 // TODO(shutej): Fix this error.
-// type Test10 *Test10
+type Test10 *Test10

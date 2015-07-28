@@ -17,9 +17,8 @@ func (self *DecodeGenerator) withDecode(name string, resume func()) {
 			return
 		}
 
-		typ := UpperCamelcase(Name(name))
-		self.printf("decode : Json.Decode.Decoder %s\n", typ)
-		self.printf("decode = ")
+		self.printf("decode : Json.Decode.Decoder T\n")
+		self.printf("decode = Json.Decode.map T ")
 		resume()
 		self.printf("\n\n")
 	})

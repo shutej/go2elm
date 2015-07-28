@@ -11,12 +11,17 @@ import Go2Elm
 
 type alias T2 = {x : Float}
 
-decode : Json.Decode.Decoder T2
-decode = (Json.Decode.object1 T2 ("X" := Json.Decode.float))
+type T = T T2
 
-empty : T2
-empty = {x=0.0}
+t : T -> T2
+t x = case x of T y -> y
 
-encode : T2 -> Json.Encode.Value
-encode = (\x -> Json.Encode.object [ ("X", Json.Encode.float x.x) ])
+decode : Json.Decode.Decoder T
+decode = Json.Decode.map T (Json.Decode.object1 T2 ("X" := Json.Decode.float))
+
+empty : T
+empty = T {x=0.0}
+
+encode : T -> Json.Encode.Value
+encode = (\x -> Json.Encode.object [ ("X", Json.Encode.float x.x) ]) << t
 

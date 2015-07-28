@@ -21,6 +21,9 @@ func (self *TypeGenerator) withType(name string, resume func()) {
 		self.printf("type alias %s = ", typ)
 		resume()
 		self.printf("\n\n")
+		self.printf("type T = T %s\n\n", typ)
+		self.printf("t : T -> %s\n", typ)
+		self.printf("t x = case x of T y -> y\n\n")
 	})
 }
 
@@ -93,13 +96,12 @@ func (self *TypeGenerator) VisitCustom(name string, resume func()) {
 }
 
 func (self *TypeGenerator) VisitReference(name string, resume func()) {
-	pkg, ref := Package(name), UpperCamelcase(Name(name))
-	imports := self.imports()
-
+	pkg := Package(name)
 	if self.stack.top() == pkg {
-		self.printf("%s", ref)
+		self.printf("T")
 	} else {
+		imports := self.imports()
 		imports[pkg] = struct{}{}
-		self.printf("%s.%s", pkg, ref)
+		self.printf("%s.T", pkg)
 	}
 }
