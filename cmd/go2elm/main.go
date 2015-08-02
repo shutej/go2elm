@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/shutej/go2elm/inception"
 	yaml "gopkg.in/yaml.v1"
 )
 
@@ -19,7 +20,7 @@ var (
 func main() {
 	flag.Parse()
 
-	configs := &Configs{}
+	configs := &inception.Configs{}
 	input, err := ioutil.ReadFile(*yml)
 	if err != nil {
 		log.Fatalf("Opening config failed: %v", err)
@@ -28,7 +29,7 @@ func main() {
 		log.Fatalf("Parsing config failed: %v", err)
 	}
 
-	types, err := Reflect(*configs)
+	types, err := inception.Inception(*configs)
 	if err != nil {
 		log.Fatalf("Loading input failed: %v", err)
 	}

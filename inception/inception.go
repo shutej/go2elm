@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package main
+package inception
 
 // This file contains the model construction by reflection.
 
@@ -43,7 +43,7 @@ type Config struct {
 	Types  []string
 }
 
-func Reflect(configs Configs) (model.Types, error) {
+func Inception(configs Configs) (model.Types, error) {
 	// TODO: sanity check arguments
 
 	progPath := *execOnly
